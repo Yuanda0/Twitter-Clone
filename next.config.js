@@ -4,7 +4,11 @@ const nextConfig = {
       remotePatterns: [
          {
             protocol: "https",
-            hostname: "https://www.tripsavvy.com"
+            hostname: "www.tripsavvy.com"
+         },
+         {
+            protocol: "https",
+            hostname: "pbs.twimg.com"
          }
       ]
    }

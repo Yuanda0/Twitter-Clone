@@ -4,7 +4,7 @@ export const Posts = [
       id: 1,
       pfp: "https://avatars.githubusercontent.com/u/6897348?v=4",
       userName: "Yuanda",
-      text: "Today, i started to make this website! It's going to be a good website. Ig it'll be completed in 2 motnhs!",
+      text: "Today, i started to make this website! It's going to be a good website. It'll be completed in 2 months ig!",
       img: undefined,
       comment: 200,
       repost: 100,
@@ -15,7 +15,7 @@ export const Posts = [
       id: 2,
       pfp: "https://source.unsplash.com/random/250x240/?man",
       userName: "Irene",
-      text: "Javascript is what a hard lang :D as me it's hard to learn",
+      text: "Javascript is such a hard lang :D it's hard to learn for me.",
       img: undefined,
       comment: 450,
       repost: 100,
@@ -43,6 +43,70 @@ export const Posts = [
       repost: 100,
       like: 600,
       view: 1400,
+   },
+   {
+      id: 5,
+      userName: "Jessica",
+      pfp: "https://source.unsplash.com/random/250x240/?woman",
+      text: "The hotel that i went last time is greaat.",
+      img: undefined,
+      comment: 200,
+      repost: 100,
+      like: 600,
+      view: 1400,
    }
 ]
 
+
+
+export const List = [
+   {
+      type: "Sports・ Trending",
+      hashtag: "#Ronaldo",
+      view: "100k"
+   },
+   {
+      type: "Trending in US",
+      hashtag: "#Election",
+      view: "1m"
+   },
+   {
+      type: "Politics・ Trending",
+      hashtag: "#RefuseDecision",
+      view: "200k"
+   },
+   {
+      type: "Trending in Turkey",
+      hashtag: "#bringbackyoutube",
+      view: "300k"
+   },
+   {
+      type: "Only on X ・ Trending",
+      hashtag: "#why",
+      view: "4m"
+   },
+   {
+      type: "Trending in UK",
+      hashtag: "#elizabeth",
+      view: "1.5m"
+   }
+]
+
+
+export const FollowList = [
+   {
+      pfp: "https://pbs.twimg.com/profile_images/1815749056821346304/jS8I28PL_400x400.jpg",
+      name: "Elon Musk",
+      userName: "elonmusk"
+   },
+   {
+      pfp: "https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg",
+      name: "Donald J. Trump",
+      userName: "realDonaldTrump"
+   },
+   {
+      pfp: "https://pbs.twimg.com/profile_images/1701334030107680768/9YmFNmbW_400x400.jpg",
+      name: "Entertainment Tonight",
+      userName: "etnow"
+   }
+]

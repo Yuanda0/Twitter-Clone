@@ -2,14 +2,13 @@
 import React, { useState } from 'react'
 import { Button } from './ui/button';
 import { Posts } from '../../constants';
-import { ModeToggle } from './ModeToggle';
 import {  BookmarkIcon, DotsHorizontalIcon, HeartIcon, ImageIcon, Share2Icon } from "@radix-ui/react-icons"
 import { GlobeIcon } from "@radix-ui/react-icons";
-import { MdOutlineGifBox } from "react-icons/md";
-import { BiPoll, BiSave } from "react-icons/bi";
+import { MdBlock, MdNotInterested, MdOutlineGifBox, MdPlaylistAddCircle } from "react-icons/md";
+import { BiPoll } from "react-icons/bi";
 import { BsEmojiSmile } from "react-icons/bs";
 import { GrSchedulePlay } from "react-icons/gr";
-import { FaRegComment } from "react-icons/fa6";
+import { FaRegComment, FaRegFlag } from "react-icons/fa6";
 import { BiRepost } from "react-icons/bi";
 import { AiFillSignal } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
@@ -18,12 +17,45 @@ import Linkify from "react-linkify";
 import Link from 'next/link';
 import { Avatar } from '@radix-ui/react-avatar';
 import { AvatarFallback, AvatarImage } from './ui/avatar';
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
+import { TfiFaceSad } from "react-icons/tfi"
+import { SlUserFollow } from 'react-icons/sl';
+import { RiUserStarLine } from 'react-icons/ri';
+import { TiVolumeMute } from "react-icons/ti";
+import { IoIosStats } from 'react-icons/io';
+import { ImEmbed2 } from "react-icons/im";
+
+function PopOver (userName : string) {
+  const datas = [
+    { icon: <MdNotInterested />, text: `Not interested in ${userName}` },
+    { icon: <TfiFaceSad />, text: "Not interested in this post" },
+    { icon: <SlUserFollow />, text: `Follow @${userName}` },
+    { icon: <RiUserStarLine />, text: `Subscribe to @${userName}` },
+    { icon: <MdPlaylistAddCircle />, text: `Add/remove @${userName} from Lists` },
+    { icon: <TiVolumeMute />, text: `Mute @${userName}` },
+    { icon: <MdBlock />, text: `Block @${userName}` },
+    { icon: <IoIosStats />, text: "View post engagements" },
+    { icon: <ImEmbed2 />, text: "Embed Post" },
+    { icon: <FaRegFlag />, text: "Report Post" }
+  ];
+
+  return datas.map((p) => (
+    <div className="flex flex-col py-2">
+      <div className="flex gap-1 cursor-pointer">
+        <div className="mr-2">{p.icon}</div>
+        <div>{p.text}</div>
+      </div>
+    </div>
+  ));
+}
+
 export default function Feed() {
 
-   const [isClicked, setIsClicked] = useState(false);
-   const [postContent, setPostContent] = useState("");
+  const [postContent, setPostContent] = useState("");
+
+  
   return (
-    <div className="feed-page w-[600px] flex flex-col h-screen mx-auto border-x border-zinc-500 overflow-auto">
+    <div className="feed overflow-x-hidden w-[600px] flex flex-col h-full border-x border-zinc-500 overflow-auto">
       <NavBar />
       <div className="p-4 flex w-[598px] h-[153px] border-b border-zinc-500">
         <div className="w-10 h-[153px]">
@@ -102,8 +134,15 @@ export default function Feed() {
                   <span className="font-thin text-[15px]">
                     @{p.userName} &middot; 4h
                   </span>
-                  <div className="ml-auto p-2 rounded-full hover:bg-zinc-500 duration-200 ease-in-out">
-                    <DotsHorizontalIcon className="w-5 h-5" />
+                  <div className="ml-auto p-2 rounded-full hover:bg-blue-500 duration-200 ease-in-out">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <DotsHorizontalIcon />
+                      </PopoverTrigger>
+                      <PopoverContent className="w-80">
+                        {PopOver(p.userName)}
+                      </PopoverContent>
+                    </Popover>
                   </div>
                 </div>
                 <div className="break-words">
@@ -160,11 +199,11 @@ export default function Feed() {
                     </span>
                   </button>
                   <div className="flex items-center ml-auto ">
-                    <div className='p-2 group hover:bg-blue-500 duration-300 ease-in-out rounded-full'>
-                      <BookmarkIcon className='w-5 h-5 group-hover:text-blue-900' />
+                    <div className="p-2 group hover:bg-blue-500 duration-300 ease-in-out rounded-full">
+                      <BookmarkIcon className="w-5 h-5 group-hover:text-blue-900" />
                     </div>
-                    <div className='p-2 group hover:bg-blue-500 duration-300 ease-in-out rounded-full'>
-                      <Share2Icon className='w-5 h-5 group-hover:text-blue-900' />
+                    <div className="p-2 group hover:bg-blue-500 duration-300 ease-in-out rounded-full">
+                      <Share2Icon className="w-5 h-5 group-hover:text-blue-900" />
                     </div>
                   </div>
                 </div>
